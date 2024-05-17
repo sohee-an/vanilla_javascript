@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
-import { viewsRouter } from "./routers";
+
+import viewsRouter from "./routers/views-router";
 
 const app = express();
 
