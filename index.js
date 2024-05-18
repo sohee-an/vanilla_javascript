@@ -3,13 +3,13 @@ import express from "express";
 import { viewsRouter } from "./server/routers/views-router.js";
 import { postsRouter } from "./server/routers/posts-router.js";
 import cors from "cors";
-import { readDb } from "./fileDB.js";
-import { fileURLToPath } from "url"; // 👈 추가
+
+import { fileURLToPath } from "url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const app = express();
-// .env 파일에 예를 들어 PORT="3000" 을 작성하면, process.env.PORT가 3000이 됨
+
 const PORT = process.env.PORT || 5500;
 
 app.use(express.static("public"));

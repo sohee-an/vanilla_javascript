@@ -10,11 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
       postContainer.className = "postContainer";
 
       data.forEach((post) => {
+        const postCountElement = document.getElementById("postCount");
+        postCountElement.textContent = `전체 글 (${data.length}개)`;
+
         const postElement = document.createElement("div");
         postElement.className = "post";
 
         const titleElement = document.createElement("h4");
-        titleElement.className = "postTitle"; // title 요소에 class 추가
+        titleElement.className = "postTitle";
         titleElement.textContent = post.title;
 
         const contentElement = document.createElement("p");
@@ -25,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
         postElement.appendChild(contentElement);
 
         postContainer.appendChild(postElement);
+        postElement.addEventListener("click", function () {
+          // 글 클릭 시 상세 페이지로 이동
+          window.location.href = `/detail?id=${post.id}`;
+        });
       });
 
       document.querySelector(".postsWrapper").appendChild(postContainer);

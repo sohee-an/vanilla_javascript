@@ -18,4 +18,10 @@ viewsRouter.get("/home", (req, res) => {
   res.sendFile(path.join(clientViewsDirectoryPath, "home/home.html"));
 });
 
+viewsRouter.get("/detail", (req, res) => {
+  res.sendFile(
+    path.join(clientViewsDirectoryPath, "blogDetail/blogDetail.html")
+  );
+});
+
 export { viewsRouter };

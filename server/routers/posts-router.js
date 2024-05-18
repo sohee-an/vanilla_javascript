@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+
 import { readDb } from "../../fileDB.js";
 import { fileURLToPath } from "url"; // 👈 추가
 
@@ -17,5 +17,14 @@ postsRouter.get("/:userid", (req, res) => {
   );
 
   res.json(userPosts);
+});
+
+postsRouter.get("/:userId/:pid", (req, res) => {
+  const { pid } = req.params;
+
+  const db = readDb();
+  const post = db.posts.find((post) => post.id === parseInt(pid, 10));
+
+  res.json(post);
 });
 export { postsRouter };
