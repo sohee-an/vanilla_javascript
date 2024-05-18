@@ -1,10 +1,6 @@
-let testEl = document.querySelector(".mainTop");
-
-testEl.addEventListener("click", function () {});
-
 document.addEventListener("DOMContentLoaded", function () {
   const userId = 1;
-  const url = `/api/${userId}/post`;
+  const url = `/api/posts/${userId}`;
 
   // API 호출
   fetch(url)

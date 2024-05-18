@@ -25,15 +25,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(viewsRouter);
-// app.use(postsRouter);
 
-app.get("/api/:userid/post", (req, res) => {
-  const { userid } = req.params;
-  console.log("userid", userid);
-  const db = readDb();
-  const userPosts = db.posts.filter(
-    (post) => post.userId === parseInt(userid, 10)
-  );
-  console.log("user", userPosts);
-  res.json(userPosts);
-});
+app.use("/api/posts", postsRouter);
