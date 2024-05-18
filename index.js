@@ -1,7 +1,9 @@
 import "dotenv/config";
 import express from "express";
 import { viewsRouter } from "./server/routers/views-router.js";
+import { postsRouter } from "./server/routers/posts-router.js";
 import cors from "cors";
+import { readDb } from "./fileDB.js";
 import { fileURLToPath } from "url"; // 👈 추가
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -23,3 +25,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(viewsRouter);
+// app.use(postsRouter);
+
+app.get("/api/:userid/post", (req, res) => {
+  const { userid } = req.params;
+  console.log("userid", userid);
+  const db = readDb();
+  const userPosts = db.posts.filter(
+    (post) => post.userId === parseInt(userid, 10)
+  );
+  console.log("user", userPosts);
+  res.json(userPosts);
+});
