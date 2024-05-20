@@ -1,4 +1,6 @@
 import Home from "./views/Home.js";
+import Posts from "./views/Posts.js";
+import Setting from "./views/Setting.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -7,8 +9,8 @@ const navigateTo = (url) => {
 const router = async () => {
   const routes = [
     { path: "/", view: Home },
-    // { path: "/posts", view: () => console.log("viewing posts") },
-    // { path: "/settings", view: () => console.log("viewing settings") },
+    { path: "/posts", view: Posts },
+    { path: "/setting", view: Setting },
   ];
 
   const potentialMatches = routes.map((route) => {
@@ -28,7 +30,7 @@ const router = async () => {
   }
 
   const view = new match.route.view();
-  console.log("view", view);
+
   document.querySelector("#root").innerHTML = await view.getHtml();
 };
 window.addEventListener("popstate", router);
