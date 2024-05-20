@@ -10,18 +10,19 @@ const viewsRouter = express.Router();
 //서버 이미지를 사용하기 위한 라우터
 viewsRouter.use("/uploads", express.static("uploads"));
 
-const clientViewsDirectoryPath = path.join(__dirname, "../../client/src/views");
-viewsRouter.use(express.static(clientViewsDirectoryPath));
+const clientViewsDirectoryPath = path.join(__dirname, "../../front");
 
-// 홈 페이지에 home.html 파일을 제공
-viewsRouter.get("/home", (req, res) => {
-  res.sendFile(path.join(clientViewsDirectoryPath, "home/home.html"));
+viewsRouter.get("/*", (req, res) => {
+  res.sendFile(path.resolve("front", "index.html"));
 });
+// viewsRouter.get("/home", (req, res) => {
+//   res.sendFile(path.join(clientViewsDirectoryPath, "home/home.html"));
+// });
 
-viewsRouter.get("/detail", (req, res) => {
-  res.sendFile(
-    path.join(clientViewsDirectoryPath, "blogDetail/blogDetail.html")
-  );
-});
+// viewsRouter.get("/detail", (req, res) => {
+//   res.sendFile(
+//     path.join(clientViewsDirectoryPath, "blogDetail/blogDetail.html")
+//   );
+// });
 
 export { viewsRouter };

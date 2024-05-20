@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import path from "path";
 import { viewsRouter } from "./server/routers/views-router.js";
 import { postsRouter } from "./server/routers/posts-router.js";
 import cors from "cors";
@@ -23,6 +24,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/static", express.static(path.resolve(__dirname, "front", "static")));
 
 app.use(viewsRouter);
 
