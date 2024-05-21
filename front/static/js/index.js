@@ -3,6 +3,7 @@ import Posts from "./views/Posts.js";
 import Setting from "./views/Setting.js";
 
 const navigateTo = (url) => {
+  console.log("url", url);
   history.pushState(null, null, url);
   router();
 };
@@ -37,7 +38,9 @@ window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
+    console.log(e.target);
     if (e.target.matches("[data-link]")) {
+      console.log("e", e);
       e.preventDefault();
       navigateTo(e.target.href);
     }
