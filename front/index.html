@@ -12,31 +12,23 @@
     <title>SPA</title>
   </head>
   <body>
-    <nav class="navbar">
+    <nav class="home_container">
       <div class="sidebar">
         <a href="/" class="nav_home" data-link>홈</a>
         <a href="/posts" class="nav_posts" data-link>내글</a>
         <a href="/setting" class="nav_setting" data-link>Setting</a>
       </div>
 
-      <div class="header">
-        <a title="우유" href="/home">
-          <h1>우유</h1>
-        </a>
-      </div>
+      <div class="content">
+        <div class="header">
+          <a class="title" href="/home">
+            <h1>우유</h1>
+          </a>
+          <i class="bi bi-search searchIcon"></i>
+        </div>
 
-      <i class="bi bi-search searchIcon"></i>
+        <div id="root"></div>
+      </div>
     </nav>
-    <div class="content">
-      <div id="root"></div>
-    </div>
-
-    <!-- <section class="container">
-      <div class="mainTop">
-        <h3 id="postCount">전체 글</h3>
-      </div>
-
-      <div class="postsWrapper" />
-    </section> -->
   </body>
 </html>
