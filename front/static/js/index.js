@@ -54,6 +54,7 @@ const router = async () => {
       result: [location.pathname],
     };
   }
+  ㅎ;
 
   const view = new match.route.view(getParams(match));
 
