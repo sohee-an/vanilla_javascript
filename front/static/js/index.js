@@ -12,8 +12,6 @@ const getParams = (match) => {
     const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(
       (result) => result[1]
     );
-    console.log("key", keys);
-    console.log("value", values);
 
     return Object.fromEntries(
       keys.map((key, i) => {
@@ -54,11 +52,13 @@ const router = async () => {
       result: [location.pathname],
     };
   }
-  ㅎ;
 
   const view = new match.route.view(getParams(match));
 
-  document.querySelector("#root").innerHTML = await view.getHtml();
+  view.getHtml().then((html) => {
+    document.querySelector("#root").innerHTML = html;
+    view.bindEvents(); // 이벤트 리스너를 바인딩
+  });
 };
 window.addEventListener("popstate", router);
 
