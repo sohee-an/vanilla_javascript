@@ -1,4 +1,4 @@
-import AbstractView from "./AbstractView.js";
+import View from "./View.js";
 
 export function useState(initValue) {
   let state = initValue;
@@ -14,7 +14,7 @@ export function useState(initValue) {
   return [getState, setState];
 }
 
-export default class extends AbstractView {
+export default class extends View {
   constructor(params) {
     super(params);
     this.setTitle("Posts");

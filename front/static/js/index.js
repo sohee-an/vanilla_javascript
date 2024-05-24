@@ -2,6 +2,7 @@ import Home from "./views/Home.js";
 import Posts from "./views/Posts.js";
 import Setting from "./views/Setting.js";
 import PostView from "./views/PostView.js";
+import NotFound from "./views/NotFound.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
@@ -33,6 +34,7 @@ const router = async () => {
     { path: "/posts", view: Posts },
     { path: "/post/:id/:something", view: PostView },
     { path: "/setting", view: Setting },
+    { path: "/404", view: NotFound },
   ];
 
   const potentialMatches = routes.map((route) => {
@@ -48,10 +50,11 @@ const router = async () => {
   );
   if (!match) {
     match = {
-      route: routes[0],
+      route: routes.find((route) => route.path === "/404"),
       result: [location.pathname],
     };
   }
+  console.log("match", match);
 
   const view = new match.route.view(getParams(match));
 
